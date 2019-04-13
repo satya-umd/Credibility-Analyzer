@@ -6,6 +6,8 @@ from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 import category_encoders as ce
 import matplotlib.pyplot as plt
 from kmodes.kmodes import KModes
+from matplotlib import pyplot
+from mpl_toolkits.mplot3d import Axes3D
 # le =  ce.OneHotEncoder(return_df=False, impute_missing=False, handle_unknown="ignore")
 df=pd.read_csv('reps.csv', sep=',',header=0)
 # my_data = genfromtxt('reps.csv', delimiter=',')
@@ -37,3 +39,15 @@ plt.scatter(lda_transformed[clusters==2][0], lda_transformed[clusters==2][1], la
 plt.scatter(lda_transformed[clusters==3][0], lda_transformed[clusters==3][1], label='Class 4', c='cyan')
 plt.legend(loc=3)
 plt.show()
+# 3d view
+# lda = LDA(n_components=3) #2-dimensional LDA
+# lda_transformed = pd.DataFrame(lda.fit_transform(dfc, clusters))
+# fig = pyplot.figure()
+# ax = Axes3D(fig)
+# ax.scatter(lda_transformed[clusters==0][0], lda_transformed[clusters==0][1],lda_transformed[clusters==0][2], label='Class 1', c='red')
+# ax.scatter(lda_transformed[clusters==1][0], lda_transformed[clusters==1][1],lda_transformed[clusters==1][2], label='Class 2', c='blue')
+# ax.scatter(lda_transformed[clusters==2][0], lda_transformed[clusters==2][1],lda_transformed[clusters==2][2], label='Class 3', c='green')
+# ax.scatter(lda_transformed[clusters==3][0], lda_transformed[clusters==3][1],lda_transformed[clusters==3][2], label='Class 4', c='cyan')
+# ax.legend(loc=3)
+# pyplot.show()
+
