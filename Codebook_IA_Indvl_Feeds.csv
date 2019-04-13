@@ -1,0 +1,73 @@
+The Employment Location node contains a collection of Employment Location details for the individual.,,,
+BrnchOfLoc_city,,,
+BrnchOfLoc_cntry,,,
+BrnchOfLoc_postlCd,,,
+BrnchOfLoc_state,,,
+BrnchOfLoc_str1,,,
+BrnchOfLoc_str2,,,
+,,,
+The Current Employment node contains collection of active employment details,,,
+CrntEmp_city,firm's address - City,,
+CrntEmp_cntry,firm's address - Country,,
+CrntEmp_orgNm,Firm's business name from the IARD composite record,,
+CrntEmp_orgPK,firm's CRD number.,,
+CrntEmp_postlCd,firm's address - Postal Code,,
+CrntEmp_state,firm's address - State,,
+CrntEmp_str1,firm's address - street1,,
+CrntEmp_str2,firm's address - street2,,
+,,,
+The CurrentRegistrations node contains a collection of registration details for the individual.,,,        Allowed values(Code-Description) are:
+CrntRgstn_regAuth,The regulatory Authority.,,        ABANDONED-Abandoned
+CrntRgstn_regCat,Representative Registration Category/Position with the Regulator. - values - RA(Investment Advisor Representative),,        ADMTERM-Administrative Termination
+CrntRgstn_st,The current registration status.,,        APPRNT-Approved Pending Prints
+CrntRgstn_stDt,The date a status change was posted to the system.,,        APPROVED-Approved
+,,,        APPROVED_RES-Restricted Approval
+The DRPs node contains a collection of reportable and disclosable DRPs for the individual.,,,        APRSLTS-Approved Pending Results
+DRP_hasBankrupt,Flag to indicate the indvl has Bankrupt DRP.,,        BAR-Bar
+DRP_hasBond,Flag to indicate the indvl has Bond DRP.,,        CE2_YEAR_TRMD-Termed CE Two Year Inactive
+DRP_hasCivilJudc,Flag to indicate the indvl has CivilJudc DRP.,,        CE_INACTIVE-Inactive - Continuing Education
+DRP_hasCriminal,Flag to indicate the indvl has Criminal DRP.,,        DEFICIENT-Deficient
+DRP_hasCustComp,Flag to indicate the indvl has CustComp DRP.,,        DENIED-Denied
+DRP_hasInvstgn,Flag to indicate the indvl has Invstgn DRP.,,        FTR-Terminated Failure to Renew
+DRP_hasJudgment,Flag to indicate the indvl has Judgment DRP.,,        INACTIVE_PRINTS-Inactive - Prints
+DRP_hasRegAction,Flag to indicate the indvl has RegAction DRP.,,        MASS_TRNSF-Termed Mass Transfer
+DRP_hasTermination,Flag to indicate the indvl has Termination DRP.,,        PENDING-Pending
+,,,        PURGED-Purged
+This node describes a one of many designations information for the individual.,,,        REJECTED-Rejected
+Dsgntn_dsgntnNm,The designation code.,,        REQUAL-Requalification
+,,,        REQUEST_TERM-Termination Requested
+The EmploymentHistories node contains a collection of employment history details for the individual,,,        REVOKED-Revoked
+EmpHs_city,Employment city,,        SUSPENSION-Suspended
+EmpHs_fromDt,The Employment Begin date.   (MM/YYYY),,        T_NOREG-Termed Without Registration
+EmpHs_orgNm,The organization name,,        T_NOREG_FTR-Terminated no registration Renewals
+EmpHs_state,State of Employment.,,        T_NOREG_MT-Terminated no registration Mass Transfer
+EmpHs_toDt,The Employment End date.   (MM/YYYY),,        T_NOU5-Terminated Without U5
+,,,        T_NOMT-Termed-Did Not Mass Transfer
+"The Exams node contains a collection of exam nodes each describing details about an individual's Passed State Exams (S63,S64,S65,S66).",,,        T_NOMTNOREG-Terminated no reg.-Did Not Mass Transfer
+Exm_exmCd,The Exam Code,,        TEMPREG-Temporary Registration
+Exm_exmDt,The date the exam was taken.(YYYY-MM-DD),,        TEMP_WD-Temporary Withdrawal
+Exm_exmNm,The Exam Name.,,        TERMED-Termed
+,,,        TRANS_RQST-Transition Requested
+The Individual node contains Administrative and/or Disclosure information for one of many individuals requested by this report.,,,        TRANS_TERM-Transition Terminated
+Info_actvAGReg,Identifies if individual has Active AG Registration,,        TRANS_ERROR-Not Transitioned - Filed In Error
+Info_firstNm,Individual's First Name,,
+Info_indvlPK,Individual's CRD #,,
+Info_lastNm,Individual's Last Name,,
+Info_link,Link URL to the individual’s composite in IAPD.,,
+Info_midNm,Individual's Middle Name,,
+Info_sufNm,Individual's Suffix Name,,
+,,,
+"This node identifies if the individual is engaged in any other business, either as a proprietor, partner, officer, director, employee, trustee, agent, or otherwise.",,,
+OthrBus_desc,Description for other business.,,
+,,,
+"The OtherNames node contains a collection of names that an individual has used or is using, or by which they are known or have been known, other their legal name, since the age of 18. This would include, for example, nicknames, aliases, and names used before or after marriage.",,,
+OthrNm_firstNm,,,
+OthrNm_lastNm,,,
+OthrNm_midNm,,,
+OthrNm_sufNm,,,
+,,,
+The PreviousRegistration node contains one of many registration for the individual previously held.,,,
+PrevRgstn_orgNm,This node has the Firm's business name from the IARD composite record,,
+PrevRgstn_orgPK,This node has the firm's CRD number.,,
+PrevRgstn_regBeginDt,The Registration Begin date.   (YYYY-MM-DD),,
+PrevRgstn_regEndDt,The Registration End date.   (YYYY-MM-DD),,
