@@ -1,0 +1,282 @@
+---
+title: "DtreeRfor"
+author: "Himanshi"
+date: "April 13, 2019"
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
+---
+
+#Train and test decision tree using test dataset
+
+```{r}
+
+df <- read.csv("input_100K.csv")
+#saving 
+#CrntRgstn_regAuth=df$CrntRgstn_regAuth
+#CrntRgstn_st=df$CrntRgstn_st
+#CrntRgstn_stDt=df$CrntRgstn_stDt
+#DRP_hasBankrupt=df$DRP_hasBankrupt
+#DRP_hasBond=df$DRP_hasBond
+#DRP_hasCivilJudc=df$DRP_hasCivilJudc
+#DRP_hasCriminal=df$DRP_hasCriminal
+#DRP_hasCustComp=df$DRP_hasCustComp
+#DRP_hasInvstgn=df$DRP_hasInvstgn
+#DRP_hasJudgment=df$DRP_hasJudgment
+#DRP_hasRegAction=df$DRP_hasRegAction
+#DRP_hasTermination=df$DRP_hasTermination
+#EmpHs_fromDt=df$EmpHs_fromDt
+#EmpHs_toDt=df$EmpHs_toDt
+#Exm_exmCd=df$Exm_exmCd
+#Info_actvAGReg=df$Info_actvAGReg
+#PrevRgstn_regBeginDt=df$PrevRgstn_regBeginDt
+#PrevRgstn_regEndDt=df$PrevRgstn_regEndDt
+
+df$PrevRgstn_orgPK <- NULL
+df$X<- NULL
+df$BrnchOfLoc_city <- NULL
+df$BrnchOfLoc_cntry <- NULL
+df$BrnchOfLoc_postlCd <- NULL
+df$BrnchOfLoc_state <- NULL
+df$BrnchOfLoc_str2 <- NULL
+df$CrntEmp_city <- NULL
+df$CrntEmp_cntry <- NULL
+df$CrntEmp_postlCd <- NULL
+df$CrntEmp_state <- NULL
+df$CrntEmp_str1 <- NULL
+df$CrntEmp_str2 <- NULL
+df$CrntRgstn_regCat <- NULL
+df$EmpHs_city <- NULL
+df$EmpHs_fromDt <- NULL
+df$EmpHs_state <- NULL
+df$EmpHs_toDt <- NULL
+df$Info_firstNm <- NULL
+df$Info_sufNm <- NULL
+df$OthrNm_firstNm <- NULL
+df$OthrNm_midNm <- NULL
+df$OthrNm_sufNm <- NULL
+df$PrevRgstn_orgNm <- NULL
+df$CrntRgstn_stDt <- NULL
+df$PrevRgstn_regBeginDt <- NULL
+df$PrevRgstn_regEndDt <- NULL
+
+write.csv(df, file = "input_100K_dtree.csv")
+
+
+
+```
+
+
+```{r}
+
+levels(df$Exm_exmCd           )[1] = "missing"
+levels(df$Exm_exmNm           )[1] = "missing"
+levels(df$DRP_hasBankrupt     )[1] = "missing"
+levels(df$DRP_hasBond         )[1] = "missing"
+levels(df$DRP_hasCivilJudc    )[1] = "missing"
+levels(df$DRP_hasCriminal     )[1] = "missing"
+levels(df$DRP_hasCustComp     )[1] = "missing"
+levels(df$DRP_hasInvstgn      )[1] = "missing"
+levels(df$DRP_hasJudgment     )[1] = "missing"
+levels(df$DRP_hasRegAction    )[1] = "missing"
+levels(df$DRP_hasTermination  )[1] = "missing"
+levels(df$Dsgntn_dsgntnNm     )[1] = "missing"
+#levels(df$PrevRgstn_regBeginDt)[1] = "missing"
+#levels(df$PrevRgstn_regEndDt)[1] = "missing"
+#levels(df$CrntRgstn_regAuth   )[1] = "missing"
+#levels(df$CrntRgstn_st        )[1] = "missing"
+#levels(df$CrntRgstn_stDt      )[1] = "missing"
+
+
+
+#df$CrntRgstn_stDt = as.Date(df$CrntRgstn_stDt, format="%Y-%m-%d")
+#df$EmpHs_fromDt = as.Date(df$EmpHs_fromDt, format="%Y-%m-%d")
+#df$EmpHs_toDt = as.Date(df$EmpHs_toDt, format="%Y-%m-%d")
+#df$PrevRgstn_regBeginDt = as.Date(df$PrevRgstn_regBeginDt, format="%Y-%m-%d")
+#df$PrevRgstn_regEndDt = as.Date(df$PrevRgstn_regEndDt, format="%Y-%m-%d")
+#df$BrnchOfLoc_cntry <- chartr(",", " ", df$BrnchOfLoc_cntry)
+#df$CrntEmp_cntry <- chartr(","," ", df$CrntEmp_cntry)
+
+
+```
+
+```{r}
+df <- read.csv("input_100K_dtree.csv")
+df$X <- NULL
+df$Unnamed..0 <- NULL
+```
+
+
+
+## count the number of values for response variable
+
+
+```{r}
+
+table(df$Info_actvAGReg)
+
+```
+
+## Dividing into training and testing data
+
+```{r}
+
+library(dplyr)
+set.seed(9)
+
+train <- sample(1:nrow(df),nrow(df)/2)
+df_test <- df[-train,]
+df_train <- df[train,]
+
+```
+
+## Checking the proportion of returned hosts
+
+```{r}
+#Original Dataset proportion of target variables
+prop.table(table(df$Info_actvAGReg))
+
+#Test Dataset proportion of target variables
+prop.table(table(df_test$Info_actvAGReg))
+
+#Train Dataset proportion of target variables
+prop.table(table(df$Info_actvAGReg))
+
+```
+
+### Proportion seems balanced. Training and testing dataset is good!
+
+## Building C50 decision tree
+
+```{r}
+
+library(C50)
+
+df_model<-C5.0(df_train[-15],	df_train$Info_actvAGReg)
+
+
+```
+
+## Displaying facts about the tree
+
+```{r}
+
+df_model
+summary(df_model)
+
+```
+
+## Plotting the tree
+
+```{r}
+
+plot(df_model)
+
+```
+
+## We will see it on testing dataset as well, it is necessary to do on both because it will tell us whether the model was overfitted
+
+# Building cross tabulation matrix to display the confusion matrix nicely
+```{r}
+
+df_pred <- predict(df_model,df_test)
+library(gmodels)
+CrossTable(df_test$Info_actvAGReg,	df_pred, 
+           prop.chisq	=	FALSE, prop.c = FALSE, prop.r = FALSE,	
+           dnn	=	c('actual	loyalty',	'predicted	loyalty'))	
+
+
+```
+
+# As we can see, this is not a very good model. This model can be improved using boosting. The number of trials that we use is the number of times the decision tree will be built. The final tree is the result of voting from all the trials
+
+```{r}
+df_boost <- C5.0(df_train[-9],	df_train$Info_actvAGReg, trials	= 24)	
+df_boost
+summary(df_boost)	
+
+
+```
+
+# Trying to predict and seeing the accuracy for prediction after boosting
+
+```{r}
+df_boost_pred <- predict(df_boost, df_test)
+CrossTable(df_test$Info_actvAGReg, df_boost_pred,
+           prop.chisq = FALSE, prop.c = FALSE, prop.r = FALSE,
+           dnn = c('actual loyalty','predicted loyalty'))
+
+```
+
+## A little bit better than the training set. But not very significantly different. Shows that there was no over-fitting in the model. 
+
+# Bagging on host dataset
+
+```{r}
+#Considering all 8 features at each tree split
+
+library(randomForest)
+
+bag.df <- randomForest(Info_actvAGReg~.,data=df_train, mtry=8, importance=TRUE)
+bag.df
+
+```
+
+# Bagging Prediction
+```{r}
+
+df_bag_pred <- predict(bag.df,newdata = df_test)
+head(df_bag_pred)
+
+
+```
+
+# Checking the actual and predicted values for bagging
+
+```{r}
+
+plot(bag.df)
+plot(df_bag_pred,df_test$Info_actvAGReg, xlab = "Predicted values", ylab = "Actual Values", main = "Model performance for Bagging")
+
+```
+
+# Random Forests on host dataset
+
+```{r}
+
+#Considering only 5 features at each tree split
+
+library(randomForest)
+
+rf.df <- randomForest(Info_actvAGReg~.,data=df_train, mtry=2, importance=TRUE)
+rf.df
+
+
+```
+
+# Random Forests Prediction
+
+```{r}
+
+df_rf_pred <- predict(rf.df,newdata = df_test)
+head(df_rf_pred)
+
+
+```
+
+# Checking the actual and predicted values for bagging
+
+```{r}
+
+plot(rf.df)
+plot(df_rf_pred,df_test$Info_actvAGReg, xlab = "Predicted values", ylab = "Actual Values", main = "Model performance for Bagging")
+
+
+```
+```{r}
+
+df
+
+
+```
