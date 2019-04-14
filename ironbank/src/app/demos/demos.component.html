@@ -1,0 +1,10 @@
+<h2>Demos</h2>
+<ul class="demos">
+  <li *ngFor="let demo of demos">
+   <a routerLink="/detail/{{demo.id}}">
+    <span class="badge">{{demo.id}}</span> {{demo.name}}
+	</a>
+  </li>
+</ul>
+
+

@@ -1,0 +1,8 @@
+<h3>Top Demos</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let demo of demos" class="col-1-4" routerLink="/detail/{{demo.id}}">
+    <div class="module demo">
+      <h4>{{demo.name}}</h4>
+    </div>
+  </a>
+</div>
