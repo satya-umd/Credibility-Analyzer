@@ -1,12 +1,22 @@
 <div *ngIf="demo">
 
-<h2>{{demo.name | uppercase}}
- Details</h2>
-<div><span>id: </span>{{demo.id}}</div>
+
 <!-- <div><span>name: </span>{{demo.name}}</div> -->
 <div>
-  <label>name:
-    <input [(ngModel)]="demo.name" placeholder="name"/>
-  </label>
+ <div class="row">
+  <div class>
+  	<h2>{{demo.name}}
+	 Details</h2>
+  </div>
+  <div>
+	  <div *ngIf="demo.id===12">
+	  		<h3>RiskSpan Data Analysis</h3>
+<p>Loan Default is one of the major problems faced by the Financial Institutions. In a lot of cases simple statistical approaches fail to identify some patterns which can precisely be located by ensemble models. We have shown a demonstration of the same in my analysis wherein firstly, we try to identify the most the relevant features for our dependant variable and then use them for prediction. Initially we tried using the Logistric Regression Approach, however, it failed to give us a desired accuracy. Then we shifted to ensembe methods like decision trees and we successful to generate a model which would predict the loan_default probability of a customer for the bank and equip the banks to avoid the losses The Accuracy received my Decision Tree is 98%! Hurray!</p>
+
+<img ng-src="{{'https://storage.googleapis.com/master-hoo.appspot.com/Image1.png'}}">
+</div>
+
+	  </div>
+</div>
 </div>
 </div>

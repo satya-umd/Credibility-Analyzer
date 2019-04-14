@@ -31,23 +31,23 @@ for key in df.keys():
 print("Started Clustering")
 km = KModes(n_clusters=4, init='Huang', n_init=5, verbose=0)
 clusters = km.fit_predict(dfc)
-lda = LDA(n_components=2) #2-dimensional LDA
-lda_transformed = pd.DataFrame(lda.fit_transform(dfc, clusters))
-plt.scatter(lda_transformed[clusters==0][0], lda_transformed[clusters==0][1], label='Class 1', c='red')
-plt.scatter(lda_transformed[clusters==1][0], lda_transformed[clusters==1][1], label='Class 2', c='blue')
-plt.scatter(lda_transformed[clusters==2][0], lda_transformed[clusters==2][1], label='Class 3', c='green')
-plt.scatter(lda_transformed[clusters==3][0], lda_transformed[clusters==3][1], label='Class 4', c='cyan')
-plt.legend(loc=3)
-plt.show()
-# 3d view
-# lda = LDA(n_components=3) #2-dimensional LDA
+# lda = LDA(n_components=2) #2-dimensional LDA
 # lda_transformed = pd.DataFrame(lda.fit_transform(dfc, clusters))
-# fig = pyplot.figure()
-# ax = Axes3D(fig)
-# ax.scatter(lda_transformed[clusters==0][0], lda_transformed[clusters==0][1],lda_transformed[clusters==0][2], label='Class 1', c='red')
-# ax.scatter(lda_transformed[clusters==1][0], lda_transformed[clusters==1][1],lda_transformed[clusters==1][2], label='Class 2', c='blue')
-# ax.scatter(lda_transformed[clusters==2][0], lda_transformed[clusters==2][1],lda_transformed[clusters==2][2], label='Class 3', c='green')
-# ax.scatter(lda_transformed[clusters==3][0], lda_transformed[clusters==3][1],lda_transformed[clusters==3][2], label='Class 4', c='cyan')
-# ax.legend(loc=3)
-# pyplot.show()
+# plt.scatter(lda_transformed[clusters==0][0], lda_transformed[clusters==0][1], label='Class 1', c='red')
+# plt.scatter(lda_transformed[clusters==1][0], lda_transformed[clusters==1][1], label='Class 2', c='blue')
+# plt.scatter(lda_transformed[clusters==2][0], lda_transformed[clusters==2][1], label='Class 3', c='green')
+# plt.scatter(lda_transformed[clusters==3][0], lda_transformed[clusters==3][1], label='Class 4', c='cyan')
+# plt.legend(loc=3)
+# plt.show()
+# 3d view
+lda = LDA(n_components=3) #2-dimensional LDA
+lda_transformed = pd.DataFrame(lda.fit_transform(dfc, clusters))
+fig = pyplot.figure()
+ax = Axes3D(fig)
+ax.scatter(lda_transformed[clusters==0][0], lda_transformed[clusters==0][1],lda_transformed[clusters==0][2], label='Class 1', c='red')
+ax.scatter(lda_transformed[clusters==1][0], lda_transformed[clusters==1][1],lda_transformed[clusters==1][2], label='Class 2', c='blue')
+ax.scatter(lda_transformed[clusters==2][0], lda_transformed[clusters==2][1],lda_transformed[clusters==2][2], label='Class 3', c='green')
+ax.scatter(lda_transformed[clusters==3][0], lda_transformed[clusters==3][1],lda_transformed[clusters==3][2], label='Class 4', c='cyan')
+ax.legend(loc=3)
+pyplot.show()
 
