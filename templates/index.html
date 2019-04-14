@@ -136,6 +136,7 @@ Here, we are trying to use the data provided by FINRA about the brokers of diffe
 </br>
 1. Performed clustering on the data to identify possible number of groups which may act as a label to a set of similar brokers.</br>
 2. Assess the credibility of the brokers by using their background information and creating a metric.</br>
+
 3. Delinquent loan classifier.</br>
 </p>
 </br>
@@ -156,7 +157,9 @@ We also tried Deep Learning based methods like Self Organizing Maps and Autoenco
 We tried to assess the credibility of the brokers by using their background information and our insights from working with data in high dimensional space and created a metric.
 </br>
 <iframe width="900" height="800" frameborder="0" scrolling="no" src="//plot.ly/~gamedrom/4.embed"></iframe>
-
+We did fetaure analysis on the categorical variables and analyzed their respective performance on Random Forests to estimate what described the data the most and built a metric based on a weighted combination of these parameters.
+</br>
+<img src="{{url_for('static', filename='dtree.png')}}"></img>
 </p>
 <h3>3. Delinquent loan classifier. :</h3>
 <p>
