@@ -6,10 +6,12 @@ As the brokers are closely related to both, the markets and the investors, hold 
 Here, we are trying to use the data provided by FINRA about the brokers of different firms and their background to:
 </br>
 </br>
-1. Performed clustering on the data to identify possible number of groups which may act as a label to a set of similar brokers.</br>
-2. Assess the credibility of the brokers by using their background information and creating a metric.</br>
 
-3. Delinquent loan classifier.</br>
+1. Performed clustering on the data to identify possible number of groups which may act as a label to a set of similar brokers.
+
+2. Assess the credibility of the brokers by using their background information and creating a metric.
+
+3. Delinquent loan classifier.
 </p>
 </br>
 
