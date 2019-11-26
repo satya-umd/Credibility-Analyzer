@@ -1,4 +1,4 @@
-## Welcome to Snehal's Folder!
+## Welcome!
 
 Folder Description
 
